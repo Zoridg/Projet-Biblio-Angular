@@ -15,6 +15,7 @@ import {BooksService} from "./services/books.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
   ],
   providers: [
     AuthService, AuthGuardService, BooksService

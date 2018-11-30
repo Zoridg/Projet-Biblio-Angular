@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="topNav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand active" routerLink="auth/signin">Bienvenue</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="auth/signin">Se connecter</a>
@@ -9,11 +9,12 @@
         <a class="nav-link" routerLink="auth/signup">Créer un compte</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLink="books" *ngIf="isAuth">Livres
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngFor="let book of books; let i = index">
-            <a class="dropdown-item" (click)="onViewBook(i)">{{book}}</a>
+        <div ngDropDown class="d-inline-block">
+          <button class="nav-link" id="dropdownButton" ngbDropdownToggle>Livres</button>
+          <div ngDropdownMenu aria-labelledby="dropdownButton" *ngFor="let book of books; let i = index">
+            <button class="dropdown-item">{{book}}</button>
           </div>
-        </a>
+        </div>
       </li>
     </ul>
     <button class=" btn btn-danger right" id="deco"

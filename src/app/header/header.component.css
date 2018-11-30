@@ -22,3 +22,8 @@
 #deco {
   margin-right: 5px;
 }
+
+.active {
+  background-color: grey;
+  color: white;
+}
