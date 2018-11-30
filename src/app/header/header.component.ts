@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import * as firebase from 'firebase';
+import {Book} from "../models/book.model";
+import {BooksService} from "../services/books.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -10,8 +13,10 @@ import * as firebase from 'firebase';
 export class HeaderComponent implements OnInit {
 
   isAuth: boolean;
+  books: Book[];
+  booksSubscription: Subscription;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private booksService: BooksService) {
   }
 
   ngOnInit() {
@@ -24,11 +29,14 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
+    this.booksSubscription = this.booksService.booksSubject.subscribe(
+      (books: Book[]) => {
+        this.books = books;
+      }
+    )
   }
 
   onSignOut() {
     this.authService.signOutUser();
   }
-
-
 }

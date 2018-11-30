@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Book} from "../models/book.model";
 import {Subject} from "rxjs";
-import * as firebase from 'firebase';
-import DataSnapshot = firebase.database.DataSnapshot;
+import * as firebase from 'firebase/app';
+import Datasnapshot = firebase.database.DataSnapshot;
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class BooksService {
 
   getBooks(){
     firebase.database().ref('/books')
-      .on('value', (data: DataSnapshot) => {
+      .on('value', (data: Datasnapshot) => {
         this.books = data.val() ? data.val() : [];
         this.emitBooks();
       });
@@ -36,7 +36,7 @@ export class BooksService {
     return new Promise(
       (resolve, reject) => {
         firebase.database().ref('/books/' + id).once('value').then(
-          (data: DataSnapshot) => {
+          (data: Datasnapshot) => {
             resolve(data.val());
           },
           (error) => {
@@ -54,6 +54,17 @@ export class BooksService {
   }
 
   removeBook(book: Book) {
+    if(book.photo) {
+      const storageRef = firebase.storage().refFromURL(book.photo);
+      storageRef.delete().then(
+        () => {
+          console.log('Photo removed!');
+        },
+        (error) => {
+          console.log('Could not remove photo! : ' + error);
+        }
+      );
+    }
     const bookIndexToRemove = this.books.findIndex(
       (bookEl) => {
         if(bookEl == book) {
@@ -81,7 +92,8 @@ export class BooksService {
             reject();
           },
           () => {
-            resolve(upload.snapshot.downloadURL);
+            console.log(upload.snapshot);
+            resolve(upload.snapshot.ref.getDownloadURL());
           }
         );
       }

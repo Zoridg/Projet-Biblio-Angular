@@ -38,7 +38,8 @@ export class BookFormComponent implements OnInit {
     const synopsis = this.bookForm.get('synopsis').value;
     const newBook = new Book(title, author);
     newBook.synopsis = synopsis;
-    if(this.fileUrl && this.fileUrl != ''){
+    console.log(this.fileUrl);
+    if(this.fileUrl && this.fileUrl !== ''){
       newBook.photo = this.fileUrl;
     }
     this.booksService.createNewBook(newBook);
@@ -54,5 +55,9 @@ export class BookFormComponent implements OnInit {
         this.fileUploaded = true;
       }
     );
+  }
+
+  detectFiles(event){
+    this.onUploadFile(event.target.files[0]);
   }
 }

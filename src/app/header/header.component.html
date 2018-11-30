@@ -1,22 +1,33 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li routerLinkActive="active">
-        <a routerLink="books">Livres</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li routerLinkActive="active">
-        <a routerLink="auth/signup">Créer un compte</a>
-      </li>
-      <li routerLinkActive="active">
-        <a routerLink="auth/signin">Connexion</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="topNav">
+  <a class="navbar-brand active" routerLink="auth/signin">Bienvenue</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="auth/signin">Se connecter</a>
       </li>
       <li>
-        <a (click)="onSignOut()"
-           style="cursor: pointer;"
-           *ngIf="isAuth">Deconnexion</a>
+        <a class="nav-link" routerLink="auth/signup">Créer un compte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLink="books" *ngIf="isAuth">Livres
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngFor="let book of books; let i = index">
+            <a class="dropdown-item" (click)="onViewBook(i)">{{book}}</a>
+          </div>
+        </a>
       </li>
     </ul>
+    <button class=" btn btn-danger right" id="deco"
+            (click)="onSignOut()"
+            *ngIf="isAuth">Déconnexion
+    </button>
   </div>
 </nav>
+
+<!--<ul role="toolbar" class="nav nav-tabs">-->
+<!--<li role="presentation" routerLinkActive="active" class="active">-->
+
+<!--</li>-->
+<!--<li role="presentation" routerLinkActive="active" class="active">-->
+
+<!--</li>-->
+<!--</ul>-->
