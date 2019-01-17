@@ -1,0 +1,7 @@
+app-header {
+  z-index: 2;
+}
+
+router-outlet {
+  z-index: 1;
+}

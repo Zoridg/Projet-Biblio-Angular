@@ -27,3 +27,15 @@
   background-color: grey;
   color: white;
 }
+
+.dropdown-menu {
+  background-color: dimgrey;
+}
+
+a[aria-expanded="true"]{
+  background-color: dimgrey;
+}
+
+.nav-item .dropdown {
+  background-color: dimgrey;
+}
