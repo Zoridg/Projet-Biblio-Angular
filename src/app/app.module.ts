@@ -16,7 +16,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FooterComponent } from './footer/footer.component'
+import { FooterComponent } from './footer/footer.component';
+import { SidePanelComponent } from './side-panel/side-panel.component'
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     BookFormComponent,
     HeaderComponent,
     FooterComponent,
+    SidePanelComponent,
   ],
   imports: [
     BrowserModule,
