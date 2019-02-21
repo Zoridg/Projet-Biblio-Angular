@@ -1,46 +1,51 @@
 import {Injectable} from '@angular/core';
 import * as firebase from 'firebase';
-import {reject, resolve} from "q";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {User} from "../models/user";
+import {environment} from "../../environments/environment";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {
+  private user: User;
+
+  constructor(private httpClient: HttpClient) {
   }
 
-  createNewUser(email: string, password: string) {
-    return new Promise(
-      (resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      }
-    );
+  createNewUser(user): Observable<User> {
+    return this.httpClient.post<User>(`${environment.api.url}/users`, user, httpOptions);
   }
 
-  signInUser(email: string, password: string) {
-    return new Promise(
-      (resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          }
-        );
+  signInUser(email: string, password: string) : Observable<User>{
+    return this.httpClient.get<User>(`${environment.api.url}/users/exists`,
+      {
+        params: {
+          mail: email,
+          pwd: password
+        }
       }
     );
   }
 
   signOutUser() {
     firebase.auth().signOut();
+  }
+
+  getUser(){
+    return this.user;
+  }
+
+  setUser(user){
+    this.user = user;
   }
 }

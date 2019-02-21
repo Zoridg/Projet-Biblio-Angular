@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-signup',
@@ -12,6 +13,8 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
   errorMessage: string;
+  validationMessage: string;
+  user: User;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -21,23 +24,34 @@ export class SignupComponent implements OnInit {
 
   initForm(){
     this.signupForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]
+      mail: ['', [Validators.required, Validators.email]],
+      pwd: ['', Validators.required],
+      pseudo: ['', Validators.required]
     });
   }
 
   onSubmit(){
-    const email = this.signupForm.get('email').value;
-    const password = this.signupForm.get('password').value;
+    const user = {
+      mail: this.signupForm.get('mail').value,
+      pwd: this.signupForm.get('pwd').value,
+      pseudo: this.signupForm.get('pseudo').value,
+      fake: 1
+    };
 
-    this.authService.createNewUser(email, password).then(
-      () => {
-        this.router.navigate(['/books']);
+    this.authService.createNewUser(user).subscribe(
+      (data: User) => {
+        this.authService.setUser(data);
+        this.validationMessage = "BRAVO";
+        console.log(data);
       },
       (error) => {
-        this.errorMessage = error;
+        if(error.status = '406'){
+          this.errorMessage = "Login already exist";
+        }
       }
-    );
+    )
+
+
   }
 
 }

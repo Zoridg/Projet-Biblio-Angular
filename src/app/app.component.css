@@ -5,3 +5,7 @@ app-header {
 router-outlet {
   z-index: 1;
 }
+
+app-footer {
+  padding-top: 60px;
+}

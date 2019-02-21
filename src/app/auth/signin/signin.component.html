@@ -1,29 +1,32 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
-    <h2>S'authentifier</h2>
+    <h2 class="label-H">S'authentifier</h2>
     <form name="formSignIn" [formGroup]="signinForm" (ngSubmit)="onSubmit()" novalidate>
       <div class="form-group">
-        <label for="email">Adresse mail</label>
+        <label class="label-H" for="mail">Adresse mail</label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="span1"><i class="fas fa-at"></i></span>
           </div>
-          <input type="text" id="email" class="form-control" formControlName="email" placeholder="email" aria-describedby="span1">
+          <input type="text" id="mail" class="form-control" formControlName="mail" placeholder="e-mail"
+                 aria-describedby="span1">
         </div>
-      <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="span2"><i class="fas fa-key"></i></span>
+        <div class="form-group">
+          <label class="label-H" for="pwd">Mot de passe</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="span2"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" id="pwd" class="form-control" formControlName="pwd" placeholder="mot de passe"
+                   aria-describedby="span2">
           </div>
-          <input type="password" id="password" class="form-control" formControlName="password" placeholder="password" aria-describedby="span2">
         </div>
-      </div>
-      <button class="btn btn-primary"
-              type="submit"
-              [disabled]="signinForm.invalid">Se connecter</button>
+        <button class="btn btn-primary"
+                type="submit">Se connecter
+        </button>
       </div>
     </form>
-    <p class="text-danger">{{ errorMessage }}</p>
+    <p class="text-danger">{{errorMessage}}</p>
+    <p class="text-success">{{validationMessage}}</p>
   </div>
 </div>

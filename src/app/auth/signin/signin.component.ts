@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-signin',
@@ -12,6 +13,8 @@ export class SigninComponent implements OnInit {
 
   signinForm: FormGroup;
   errorMessage: string;
+  validationMessage: string;
+  user: User;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -21,21 +24,24 @@ export class SigninComponent implements OnInit {
 
   initForm(){
     this.signinForm = this.formBuilder.group({
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
+      mail: ['', [Validators.email, Validators.required]],
+      pwd: ['', [Validators.required]]
     });
   }
 
   onSubmit(){
-    const email = this.signinForm.get('email').value;
-    const password = this.signinForm.get('password').value;
+    const mail = this.signinForm.get('mail').value;
+    const pwd = this.signinForm.get('pwd').value;
 
-    this.authService.signInUser(email, password).then(
-      () => {
-        this.router.navigate(['/books'])
-      },
-      (error) => {
-        this.errorMessage = error;
+    this.authService.signInUser(mail, pwd).subscribe(
+      (data: User) => {
+        this.user = data;
+        this.validationMessage = "CONNECTE";
+        this.router.navigate(['/homepage']);
+      }, (error) => {
+        if(error.status = '404'){
+          this.errorMessage = "Invalid Credentials";
+        }
       }
     );
   }

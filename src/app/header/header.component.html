@@ -8,13 +8,6 @@
       <li>
         <a class="nav-link menu-item" routerLink="auth/signup">Créer un compte</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true"
-           aria-expanded="true" data-toggle="dropdown">Livres</a>
-        <ul class="dropdown-menu" role="menu">
-          <li *ngFor="let book of books; let i = index"><a class="dropdown-item" [routerLink]="['/books/view', i]">{{book.title}}</a></li>
-        </ul>
-      </li>
     </ul>
   </div>
   <button class=" btn btn-danger right" id="deco"

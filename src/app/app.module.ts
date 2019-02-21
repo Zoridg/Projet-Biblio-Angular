@@ -13,11 +13,12 @@ import {AuthService} from "./services/auth.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {BooksService} from "./services/books.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FooterComponent } from './footer/footer.component';
-import { SidePanelComponent } from './side-panel/side-panel.component'
+import {FooterComponent} from './footer/footer.component';
+import {SidebarModule} from "ng-sidebar";
+import {HttpClientModule} from "@angular/common/http";
+import { HomepageComponent } from './homepage/homepage.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -25,8 +26,9 @@ const appRoutes: Routes = [
   {path: 'books', canActivate: [AuthGuardService], component: BookListComponent},
   {path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent},
   {path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent},
-  {path: '', redirectTo: '/books', pathMatch: 'full'},
-  {path: '**', redirectTo: '/books'}
+  {path: 'homepage', component: HomepageComponent},
+  {path: '', redirectTo: '/homepage', pathMatch: 'full'},
+  {path: '**', redirectTo: '/homepage'}
 ];
 
 @NgModule({
@@ -39,7 +41,7 @@ const appRoutes: Routes = [
     BookFormComponent,
     HeaderComponent,
     FooterComponent,
-    SidePanelComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule
+    NgbModule,
+    SidebarModule
   ],
   providers: [
     AuthService, AuthGuardService, BooksService
