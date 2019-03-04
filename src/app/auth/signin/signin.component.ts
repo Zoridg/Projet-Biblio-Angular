@@ -37,6 +37,7 @@ export class SigninComponent implements OnInit {
       (data: User) => {
         this.user = data;
         this.validationMessage = "CONNECTE";
+        localStorage.setItem("uno", JSON.stringify(data));
         this.router.navigate(['/homepage']);
       }, (error) => {
         if(error.status = '404'){

@@ -5,13 +5,6 @@ import {Observable} from "rxjs";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
-
 @Injectable({
   providedIn: 'root'
 })
@@ -19,26 +12,34 @@ export class AuthService {
 
   private user: User;
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    })
+  };
+
   constructor(private httpClient: HttpClient) {
   }
 
   createNewUser(user): Observable<User> {
-    return this.httpClient.post<User>(`${environment.api.url}/users`, user, httpOptions);
+    return this.httpClient.post<User>(`${environment.api.url}/users`, user, this.httpOptions);
   }
 
-  signInUser(email: string, password: string) : Observable<User>{
-    return this.httpClient.get<User>(`${environment.api.url}/users/exists`,
-      {
-        params: {
-          mail: email,
-          pwd: password
-        }
+  signInUser(mail: string, pwd: string) : Observable<User>{
+    this.user.mail = mail;
+    this.user.pwd = pwd;
+    const options = {
+      ...this.httpOptions,
+      params: {
+        mail: mail,
+        pwd: pwd
       }
-    );
+    };
+    return this.httpClient.get<User>(`${environment.api.url}/users/exists`, options);
   }
 
   signOutUser() {
-    firebase.auth().signOut();
+    localStorage.clear();
   }
 
   getUser(){

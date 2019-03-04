@@ -19,6 +19,8 @@ import {FooterComponent} from './footer/footer.component';
 import {SidebarModule} from "ng-sidebar";
 import {HttpClientModule} from "@angular/common/http";
 import { HomepageComponent } from './homepage/homepage.component';
+import { EventListComponent } from './event-list/event-list.component';
+import {EventService} from "./services/event.service";
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
   {path: 'books', canActivate: [AuthGuardService], component: BookListComponent},
   {path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent},
   {path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent},
+  {path: 'events', canActivate: [AuthGuardService], component: EventListComponent},
   {path: 'homepage', component: HomepageComponent},
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
   {path: '**', redirectTo: '/homepage'}
@@ -42,6 +45,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
+    EventListComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,7 @@ const appRoutes: Routes = [
     SidebarModule
   ],
   providers: [
-    AuthService, AuthGuardService, BooksService
+    AuthService, AuthGuardService, BooksService, EventService
   ],
   bootstrap: [AppComponent]
 })

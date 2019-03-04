@@ -26,7 +26,7 @@
           </div>
           <input type="text" class="form-control" disabled placeholder="Upload Image">
           <span class="input-group-btn">
-            <input #file type="file" (change)="detectFiles($event)" accept="image/*" hidden>
+            <input #file type="file" (change)="detectFiles($event.ts)" accept="image/*" hidden>
             <button #upload type="button" id="btn-browse" class="btn btn-primary input-group-lg" (click)="file.click()">
               <i class="fas fa-search"></i> Browse
             </button>
