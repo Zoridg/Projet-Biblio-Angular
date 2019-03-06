@@ -25,13 +25,13 @@ import {EventService} from "./services/event.service";
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
   {path: 'auth/signin', component: SigninComponent},
-  {path: 'books', canActivate: [AuthGuardService], component: BookListComponent},
-  {path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent},
-  {path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent},
-  {path: 'events', canActivate: [AuthGuardService], component: EventListComponent},
-  {path: 'homepage', component: HomepageComponent},
-  {path: '', redirectTo: '/homepage', pathMatch: 'full'},
-  {path: '**', redirectTo: '/homepage'}
+  {path: 'books', component: BookListComponent},
+  {path: 'books/new', component: BookFormComponent},
+  {path: 'books/view/:id', component: SingleBookComponent},
+  {path: 'events/:id', component: EventListComponent},
+  {path: '', component: HomepageComponent},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: '**', redirectTo: '/'}
 ];
 
 @NgModule({

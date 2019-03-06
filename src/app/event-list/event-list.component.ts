@@ -1,34 +1,32 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
+import {Component, OnInit} from '@angular/core';
 import {EventService} from "../services/event.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.css']
 })
-export class EventListComponent implements OnInit, OnDestroy {
+export class EventListComponent implements OnInit {
 
   events: Event[];
-  eventsSubscription: Subscription;
+  public id: number;
 
-  constructor(private eventsService: EventService, private router: Router) { }
+  constructor(private eventsService: EventService, private router: Router, private authService: AuthService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.eventsSubscription = this.eventsService.eventsSubject.subscribe(
-      (events: Event[]) => {
-        this.events = events;
-      }
-    )
+    this.route.params.subscribe(params => {
+      this.id = Number(params['id']);
+    });
+    this.eventsService.getEventsByUno(this.id).subscribe(data => {
+      this.events = data;
+    });
   }
 
-  onNewEvent(){
+  onNewEvent() {
     this.router.navigate(['/events']);
-  }
-
-  ngOnDestroy(){
-    this.eventsSubscription.unsubscribe();
   }
 
 }

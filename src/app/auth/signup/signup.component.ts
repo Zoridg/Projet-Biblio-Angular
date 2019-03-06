@@ -40,9 +40,8 @@ export class SignupComponent implements OnInit {
 
     this.authService.createNewUser(user).subscribe(
       (data: User) => {
-        this.authService.setUser(data);
-        this.validationMessage = "BRAVO";
-        console.log(data);
+        this.user = data;
+        this.router.navigate(['events/', this.user.uno]);
       },
       (error) => {
         if(error.status = '406'){

@@ -14,30 +14,16 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   isAuth: boolean;
-  books: Book[];
-  booksSubscription: Subscription;
 
   constructor(private authService: AuthService, private booksService: BooksService) {
   }
 
   ngOnInit() {
-    firebase.auth().onAuthStateChanged(
-      (user) => {
-        if (user) {
-          this.isAuth = true;
-        } else {
-          this.isAuth = false;
-        }
-      }
-    );
-    this.booksSubscription = this.booksService.booksSubject.subscribe(
-      (books: Book[]) => {
-        this.books = books;
-      }
-    )
+    this.isAuth = !!localStorage.getItem('uno');
   }
 
   onSignOut() {
     this.authService.signOutUser();
+    this.isAuth = false;
   }
 }

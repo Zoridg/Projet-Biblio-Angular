@@ -18,7 +18,6 @@ export class EventService {
   eventsSubject = new Subject<Event[]>();
 
   constructor(private httpClient: HttpClient){
-    // this.getEventsByUno(localStorage.getItem("uno"));
   }
 
   emitEvents(){
@@ -29,7 +28,7 @@ export class EventService {
     return this.httpClient.post<Event>(`${environment.api.url}/event/${id}`, event, httpOptions);
   }
 
-  getEventsByUno(id: number): Observable<Event[]>{
+  getEventsByUno(id): Observable<Event[]>{
     return this.httpClient.get<Event[]>(`${environment.api.url}/event/participate/${id}`, httpOptions);
   }
 

@@ -11,10 +11,9 @@ import {User} from "../../models/user";
 })
 export class SigninComponent implements OnInit {
 
-  signinForm: FormGroup;
-  errorMessage: string;
-  validationMessage: string;
+  signinForm: FormGroup = new FormGroup({});
   user: User;
+  errorMessage: string;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -36,10 +35,10 @@ export class SigninComponent implements OnInit {
     this.authService.signInUser(mail, pwd).subscribe(
       (data: User) => {
         this.user = data;
-        this.validationMessage = "CONNECTE";
-        localStorage.setItem("uno", JSON.stringify(data));
-        this.router.navigate(['/homepage']);
-      }, (error) => {
+        localStorage.setItem("uno", JSON.stringify(data.uno));
+        this.router.navigate(['events/', this.user.uno]);
+      },
+      (error) => {
         if(error.status = '404'){
           this.errorMessage = "Invalid Credentials";
         }
