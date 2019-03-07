@@ -1,10 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
-import * as firebase from 'firebase';
-import {Book} from "../models/book.model";
-import {BooksService} from "../services/books.service";
-import {Subscription} from "rxjs";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,17 +8,17 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 
-  isAuth: boolean;
-
-  constructor(private authService: AuthService, private booksService: BooksService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.isAuth = !!localStorage.getItem('uno');
   }
 
   onSignOut() {
     this.authService.signOutUser();
-    this.isAuth = false;
+  }
+
+  public isConnected(): boolean {
+    return !!this.authService.user;
   }
 }

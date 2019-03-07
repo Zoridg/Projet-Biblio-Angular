@@ -34,9 +34,8 @@ export class SigninComponent implements OnInit {
 
     this.authService.signInUser(mail, pwd).subscribe(
       (data: User) => {
-        this.user = data;
-        localStorage.setItem("uno", JSON.stringify(data.uno));
-        this.router.navigate(['events/', this.user.uno]);
+        this.authService.user = data;
+        this.router.navigate(['events']);
       },
       (error) => {
         if(error.status = '404'){

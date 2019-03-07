@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Event} from '../models/event';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,27 +15,24 @@ const httpOptions = {
 })
 export class EventService {
 
-  events: Event[] = [];
-  eventsSubject = new Subject<Event[]>();
+  private _event: Event;
 
-  constructor(private httpClient: HttpClient){
+  constructor(private httpClient: HttpClient) {
   }
 
-  emitEvents(){
-    this.eventsSubject.next(this.events);
-  }
-
-  addEvent(id: number, event: Event) : Observable<Event>{
+  createNewEvent(id: number, event: Event): Observable<Event> {
     return this.httpClient.post<Event>(`${environment.api.url}/event/${id}`, event, httpOptions);
   }
 
-  getEventsByUno(id): Observable<Event[]>{
+  getEventsByUno(id): Observable<Event[]> {
     return this.httpClient.get<Event[]>(`${environment.api.url}/event/participate/${id}`, httpOptions);
   }
 
-  createNewEvent(event: Event){
-    this.events.push(event);
-    // this.addEvent(localStorage.getItem("uno"), event);
-    this.emitEvents();
+  public get event(){
+    return this._event;
+  }
+
+  public set event(event: Event){
+    this._event = event;
   }
 }
