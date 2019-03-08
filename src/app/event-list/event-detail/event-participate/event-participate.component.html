@@ -23,7 +23,12 @@
           <button class="btn btn-success" *ngIf="addEvent" type="submit">Enregistrer</button>
           <p class="alert-danger">{{errorMessage}}</p>
         </form>
-      <div class="card-footer">
+      <div class="card-footer buttons">
+        <div class="button-wrapper">
+          <button type="button" class="btn btn-labeled btn-warning" routerLink="/homepage">
+            <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
+          </button>
+        </div>
         <button class="btn btn-outline-primary" id="addEvent" (click)="showAddEvent()"><span
           class="btn-label btn-label-left pull-left"><i class="fas fa-plus-circle"></i></span>Ajouter un participant
         </button>

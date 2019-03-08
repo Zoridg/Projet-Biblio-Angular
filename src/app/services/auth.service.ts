@@ -30,6 +30,13 @@ export class AuthService {
     } as User, this.httpOptions);
   }
 
+  public isConnected(): boolean {
+    if (!this.user) {
+      this.router.navigate(['/auth/signin'])
+    }
+    return !!this.user;
+  }
+
   public signOutUser() {
     localStorage.setItem('user', null);
     this.router.navigate(['/']);

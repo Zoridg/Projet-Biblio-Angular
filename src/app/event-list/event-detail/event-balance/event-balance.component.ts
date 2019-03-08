@@ -23,7 +23,6 @@ export class EventBalanceComponent implements OnInit {
   ngOnInit() {
     this.paymentService.getPaymentByUno(this.eventsService.event.eno).subscribe(data => {
       this.payments = data;
-      console.log(data);
     });
   }
 

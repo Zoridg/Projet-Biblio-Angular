@@ -16,9 +16,11 @@ export class EventFormComponent implements OnInit {
   newEvent: Event;
 
   constructor(private formBuilder: FormBuilder, private eventService: EventService,
-              private router: Router, private authService: AuthService) { }
+              private router: Router, private authService: AuthService) {
+  }
 
   ngOnInit() {
+    this.authService.isConnected();
     this.eventForm = this.formBuilder.group({
       title: ['', Validators.required],
       description: '',

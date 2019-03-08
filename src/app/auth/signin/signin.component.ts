@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
-import {User} from "../../models/user";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-signin',
@@ -15,20 +15,24 @@ export class SigninComponent implements OnInit {
   user: User;
   errorMessage: string;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  }
 
   ngOnInit() {
+    if(this.authService.isConnected()) {
+      this.router.navigate(['/events']);
+    }
     this.initForm();
   }
 
-  initForm(){
+  initForm() {
     this.signinForm = this.formBuilder.group({
       mail: ['', [Validators.email, Validators.required]],
       pwd: ['', [Validators.required]]
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     const mail = this.signinForm.get('mail').value;
     const pwd = this.signinForm.get('pwd').value;
 
@@ -38,8 +42,8 @@ export class SigninComponent implements OnInit {
         this.router.navigate(['events']);
       },
       (error) => {
-        if(error.status = '404'){
-          this.errorMessage = "Login et mot de passe incorrect";
+        if (error.status = '404') {
+          this.errorMessage = 'Login et mot de passe incorrect';
         }
       }
     );

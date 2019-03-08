@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventBalanceComponent } from './event-balance.component';
 
-describe('EventBalanceComponent', () => {
+describe('EventResolveComponent', () => {
   let component: EventBalanceComponent;
   let fixture: ComponentFixture<EventBalanceComponent>;
 

@@ -16,8 +16,6 @@ const httpOptions = {
 })
 export class EventService {
 
-  private _event: Event;
-
   constructor(private httpClient: HttpClient) {
   }
 
@@ -34,10 +32,10 @@ export class EventService {
   }
 
   public get event() {
-    return this._event;
+    return JSON.parse(localStorage.getItem('event')) as Event;
   }
 
   public set event(event: Event) {
-    this._event = event;
+    localStorage.setItem('event', JSON.stringify(event));
   }
 }

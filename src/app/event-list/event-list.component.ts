@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {EventService} from "../services/event.service";
-import {Router} from "@angular/router";
-import {AuthService} from "../services/auth.service";
+import {EventService} from '../services/event.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 import {Event} from '../models/event';
 
 @Component({
@@ -19,19 +19,18 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.authService.user == null){
-      this.router.navigate(['/']);
+    if (this.authService.isConnected()) {
+      this.eventsService.getEventsByUno(this.authService.user.uno).subscribe(data => {
+        this.events = data;
+      });
     }
-    this.eventsService.getEventsByUno(this.authService.user.uno).subscribe(data => {
-      this.events = data;
-    });
   }
 
   onNewEvent() {
     this.router.navigate(['/events/new']);
   }
 
-  onViewEvent(event: Event){
+  onViewEvent(event: Event) {
     this.eventsService.event = event;
     this.router.navigate(['events/view', event.eno]);
   }
