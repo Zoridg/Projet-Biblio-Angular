@@ -16,8 +16,6 @@ export class AuthService {
     })
   };
 
-  private _user: User;
-
   constructor(private httpClient: HttpClient, private router: Router) {
   }
 
@@ -33,15 +31,15 @@ export class AuthService {
   }
 
   public signOutUser() {
-    this._user = null;
+    localStorage.setItem('user', null);
     this.router.navigate(['/']);
   }
 
   public get user(): User {
-    return this._user;
+    return JSON.parse(localStorage.getItem('user')) as User;
   }
 
   public set user(user: User) {
-    this._user = user;
+    localStorage.setItem('user', JSON.stringify(user));
   }
 }

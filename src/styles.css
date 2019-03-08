@@ -1,4 +1,1 @@
-body {
-  background-image: url("http://www.dreamtemplate.com/dreamcodes/bg_images/color/c9.jpg");
-  background-size: cover;
-}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

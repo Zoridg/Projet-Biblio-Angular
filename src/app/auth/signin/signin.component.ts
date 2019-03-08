@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
       },
       (error) => {
         if(error.status = '404'){
-          this.errorMessage = "Invalid Credentials";
+          this.errorMessage = "Login et mot de passe incorrect";
         }
       }
     );

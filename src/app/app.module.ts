@@ -19,7 +19,16 @@ import {EventDetailComponent} from './event-list/event-detail/event-detail.compo
 import {EventFormComponent} from './event-list/event-form/event-form.component';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import {BsDatepickerModule} from 'ngx-bootstrap';
+import {AccordionModule, BsDatepickerModule, TabsModule} from 'ngx-bootstrap';
+import {EventInfoComponent} from './event-list/event-detail/event-info/event-info.component';
+import {EventParticipateComponent} from './event-list/event-detail/event-participate/event-participate.component';
+import {EventBalanceComponent} from './event-list/event-detail/event-balance/event-balance.component';
+import {UserService} from './services/user.service';
+import {ParticipateService} from './services/participate.service';
+import {PaymentService} from './services/payment.service';
+import { PaimentComponent } from './event-list/paiment/paiment.component';
+import {MatSelectModule} from '@angular/material/select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -29,6 +38,7 @@ const appRoutes: Routes = [
   {path: 'events', component: EventListComponent},
   {path: 'events/new', component: EventFormComponent},
   {path: 'events/view/:id', component: EventDetailComponent},
+  {path: 'paiment/new', component: PaimentComponent},
   {path: '', component: HomepageComponent},
   {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: '**', redirectTo: '/'}
@@ -45,8 +55,14 @@ const appRoutes: Routes = [
     EventListComponent,
     EventDetailComponent,
     EventFormComponent,
+    EventInfoComponent,
+    EventParticipateComponent,
+    EventBalanceComponent,
+    PaimentComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    MatSelectModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -55,9 +71,16 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     SidebarModule,
     BsDatepickerModule.forRoot(),
+    TabsModule.forRoot(),
+    AccordionModule.forRoot(),
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr'}, AuthService, EventService
+    {provide: LOCALE_ID, useValue: 'fr'},
+    AuthService,
+    EventService,
+    UserService,
+    ParticipateService,
+    PaymentService,
   ],
   bootstrap: [AppComponent]
 })
