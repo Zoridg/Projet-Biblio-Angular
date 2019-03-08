@@ -1,0 +1,11 @@
+#addParticipate {
+  margin-top: 10px;
+  position: absolute;
+  height: 35px;
+  width: 250px;
+  right: 0;
+}
+
+.labelInfo {
+  right: 0;
+}

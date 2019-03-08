@@ -1,4 +1,13 @@
-<h1 style="color: white">{{event.eno}}</h1>
-<h2 style="color: white">{{event.title}}</h2>
-<h3 style="color: white">{{event.description}}</h3>
-<h4 style="color: white">{{event.date_creation}}</h4>
+<div class="col-lg-12">
+  <tabset>
+    <tab heading="Informations" id="tab1">
+      <app-event-info></app-event-info>
+    </tab>
+    <tab heading="Participants">
+      <app-event-participate></app-event-participate>
+    </tab>
+    <tab heading="Dépenses">
+      <app-event-balance></app-event-balance>
+    </tab>
+  </tabset>
+</div>

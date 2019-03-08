@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h2>Liste des participants</h2>
+      </div>
+      <div class="card-body">
+        <label id="event" class="list-group-item btn btn-light" *ngFor="let user of users">
+          <h3 class="list-group-item-heading" style="text-align: center;">
+            {{user.pseudo}}
+          </h3>
+          <label class="labelInfo" style="font-style: italic;" *ngIf="user.mail">{{user.mail}}</label>
+          <label class="labelInfo" style="font-style: italic;" *ngIf="!user.mail">Utilisateur fictif</label>
+        </label>
+        <form [formGroup]="participateForm" (ngSubmit)="onSubmitParticipate()">
+          <div class="form-group">
+            <label *ngIf="addEvent">
+              <input type="checkbox" [checked]="isFake" (change)="changeFake()"><label style="margin-left: 5px">Utilisateur fictif</label>
+              <input type="text" placeholder="Pseudo" *ngIf="isFake" formControlName="pseudo">
+              <input type="text" placeholder="mail du participant" *ngIf="!isFake" formControlName="mail">
+            </label>
+          </div>
+          <button class="btn btn-success" *ngIf="addEvent" type="submit">Enregistrer</button>
+          <p class="alert-danger">{{errorMessage}}</p>
+        </form>
+      <div class="card-footer">
+        <button class="btn btn-outline-primary" id="addEvent" (click)="showAddEvent()"><span
+          class="btn-label btn-label-left pull-left"><i class="fas fa-plus-circle"></i></span>Ajouter un participant
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

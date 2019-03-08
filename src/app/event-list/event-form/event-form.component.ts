@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Event} from '../../models/event';
@@ -14,7 +14,6 @@ export class EventFormComponent implements OnInit {
 
   eventForm: FormGroup;
   newEvent: Event;
-  @Input() matDatePicker;
 
   constructor(private formBuilder: FormBuilder, private eventService: EventService,
               private router: Router, private authService: AuthService) { }
@@ -27,7 +26,7 @@ export class EventFormComponent implements OnInit {
     });
   }
 
-  onSaveEvent() {
+  public onSaveEvent() {
     const title = this.eventForm.get('title').value;
     const describe = this.eventForm.get('description').value;
     const dateEvent = this.eventForm.get('date').value;
@@ -38,5 +37,4 @@ export class EventFormComponent implements OnInit {
     });
     this.router.navigate(['/books']);
   }
-
 }

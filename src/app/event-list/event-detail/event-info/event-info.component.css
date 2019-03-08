@@ -1,0 +1,10 @@
+.container {
+  position: absolute;
+  width: 100%
+}
+
+.card {
+  width: auto;
+  margin: auto;
+  position: relative;
+}

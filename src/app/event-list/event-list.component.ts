@@ -13,7 +13,9 @@ export class EventListComponent implements OnInit {
 
   events: Event[];
 
-  constructor(private eventsService: EventService, private router: Router, private authService: AuthService) {
+  constructor(private eventsService: EventService,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit() {

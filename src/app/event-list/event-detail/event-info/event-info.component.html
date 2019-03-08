@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col-lg-12" style="margin-top: 10px;">
+    <div class="card" style="width: 18rem;">
+      <i class="card-img-top fas fa-running"></i>
+      <div class="card-body">
+        <h5 class="card-title">{{event.title}}</h5>
+        <p class="card-text">{{event.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{event.date_creation | date: 'EEEE dd LLLL à HH:mm'}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

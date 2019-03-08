@@ -1,0 +1,13 @@
+<accordion>
+  <accordion-group
+    heading="{{payment.giver.pseudo}} a donné {{payment.amount}} pour {{payment.lib}} le {{payment.datePay | date: 'EEEE dd LLLL'}}"
+    *ngFor="let payment of payments">
+    <h5>Receveurs</h5>
+    <ul>
+      <li *ngFor="let user of payment.userReceivers">{{user.pseudo}}</li>
+    </ul>
+  </accordion-group>
+</accordion>
+<button class="btn btn-outline-primary" id="addEvent" (click)="addPayment()"><span
+  class="btn-label btn-label-left pull-left"><i class="fas fa-plus-circle"></i></span>Ajouter un paiement
+</button>
