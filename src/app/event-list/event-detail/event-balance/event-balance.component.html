@@ -6,6 +6,7 @@
     <ul>
       <li *ngFor="let user of payment.userReceivers">{{user.pseudo}}</li>
     </ul>
+    <button class="btn btn-outline-info right" (click)="showBalance(payment.eno)">Equilibrage</button>
   </accordion-group>
 </accordion>
 
@@ -17,7 +18,7 @@
   </div>
 
   <div>
-    <button class="btn btn-outline-primary" id="addEvent" (click)="addPayment()"><span
+    <button class="btn btn-primary" id="addEvent" (click)="addPayment()"><span
       class="btn-label btn-label-left pull-left"><i class="fas fa-plus-circle"></i></span>Ajouter un paiement
     </button>
   </div>

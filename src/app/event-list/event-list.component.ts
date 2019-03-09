@@ -27,12 +27,11 @@ export class EventListComponent implements OnInit {
   }
 
   onNewEvent() {
-    this.router.navigate(['/events/new']);
+    this.router.navigate(['events/new']);
   }
 
   onViewEvent(event: Event) {
     this.eventsService.event = event;
     this.router.navigate(['events/view', event.eno]);
   }
-
 }

@@ -1,18 +1,26 @@
 <div class="container">
-  <div class="col-lg-12" style="margin-top: 10px;">
-    <div class="card" style="width: 18rem;">
-      <i class="card-img-top fas fa-running"></i>
-      <div class="card-body">
-        <h5 class="card-title">{{event.title}}</h5>
-        <p class="card-text">{{event.description}}</p>
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <div class="card hovercard">
+        <div class="cardheader">
+
+        </div>
+        <div class="avatar">
+          <img alt="" src="../../../../assets/icone-lieu.png">
+        </div>
+        <div class="info">
+          <h5 class="card-title">{{event.title}}</h5>
+          <blockquote class="card-text">{{event.description}}</blockquote>
+        </div>
+        <div class="bottom">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{event.date_creation | date: 'EEEE dd LLLL à HH:mm'}}</li>
+          </ul>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{event.date_creation | date: 'EEEE dd LLLL à HH:mm'}}</li>
-      </ul>
     </div>
   </div>
 </div>
-
 <div class="button-wrapper">
   <button type="button" class="btn btn-labeled btn-warning" routerLink="/events">
     <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour

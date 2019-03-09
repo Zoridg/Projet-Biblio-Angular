@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 cold-md-10 col-sm-10 col-xs-12">
     <div class="card">
       <div class="card-header">
         <h2>Vos évènements</h2>
@@ -7,20 +7,22 @@
       <div class="card-body">
         <p *ngIf="!events || events.length === 0">Vous n'avez pas encore d'évenèments. Cliquez sur le bouton "Ajouter un
           évènement"</p>
-        <button id="event" class="list-group-item btn btn-light" *ngFor="let event of events;"
+        <button id="btnview" class="btn btn-outline-secondary col-lg-4 col-md-4 col-sm-4 col-xs-12" *ngFor="let event of events;"
                 (click)="onViewEvent(event)">
-          <h3 class="list-group-item-heading" style="text-align: center;">
-            {{ event.title }}
-          </h3>
-          <label style="font-style: italic;">{{ event.date_creation | date: 'EEEE dd LLLL'}}</label>
-          <!--<button type="button" class="btn btn-labeled btn-danger" id="trash">-->
-          <!--<span class="btn-label"><i class="fas fa-trash"></i></span> Supprimer</button>-->
+          <div class="box-part text-center">
+            <img src="../../assets/logo-evenements.png">
+            <div class="title">
+              <h4>{{event.title}}</h4>
+            </div>
+            <div class="text">
+              <span>{{event.description}}</span>
+            </div>
+            <label style="font-style: italic;">{{ event.date_creation | date: 'EEEE dd LLLL'}}</label>
+          </div>
         </button>
       </div>
       <div class="card-footer">
-        <button class="btn btn-outline-primary" id="addEvent" (click)="onNewEvent()"><span
-          class="btn-label btn-label-left pull-left"><i class="fas fa-plus-circle"></i></span>Ajouter un évènement
-        </button>
+        <button class="btn btn-outline-primary" id="addEvent" (click)="onNewEvent()"><i class="fas fa-plus-circle"></i> Ajouter un évènement</button>
       </div>
     </div>
   </div>

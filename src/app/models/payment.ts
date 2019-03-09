@@ -1,6 +1,6 @@
 import {User} from './user';
 
-export class Payment{
+export class Payment {
   pno: number;
   uno: number;
   eno: number;
@@ -10,7 +10,7 @@ export class Payment{
   userReceivers: User[];
   giver: User;
 
-  constructor(uno: number, eno: number, lib: string, amount: number, users: User[]){
+  constructor(uno: number, eno: number, lib: string, amount: number, users: User[]) {
     this.uno = uno;
     this.eno = eno;
     this.lib = lib;

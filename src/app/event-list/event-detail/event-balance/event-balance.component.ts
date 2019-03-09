@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PaymentService} from '../../../services/payment.service';
 import {Payment} from '../../../models/payment';
+import {Event} from '../../../models/event';
 import {EventService} from '../../../services/event.service';
 import {UserService} from '../../../services/user.service';
 import {Router} from '@angular/router';
@@ -14,11 +15,11 @@ export class EventBalanceComponent implements OnInit {
 
   private payments: Payment[];
 
-
   constructor(private eventsService: EventService,
               private userService: UserService,
               private paymentService: PaymentService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.paymentService.getPaymentByUno(this.eventsService.event.eno).subscribe(data => {
@@ -26,8 +27,12 @@ export class EventBalanceComponent implements OnInit {
     });
   }
 
-  public addPayment(){
+  public addPayment() {
     this.router.navigate(['paiment/new']);
+  }
+
+  public showBalance(id: number) {
+    this.router.navigate(['events/balance/', id]);
   }
 
 }

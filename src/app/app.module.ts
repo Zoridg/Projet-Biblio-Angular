@@ -26,9 +26,13 @@ import {EventBalanceComponent} from './event-list/event-detail/event-balance/eve
 import {UserService} from './services/user.service';
 import {ParticipateService} from './services/participate.service';
 import {PaymentService} from './services/payment.service';
-import { PaimentComponent } from './event-list/paiment/paiment.component';
+import {PaimentComponent} from './event-list/paiment/paiment.component';
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BalanceComponent} from './event-list/event-detail/event-balance/balance/balance.component';
+import {ChartsModule, WavesModule} from 'angular-bootstrap-md';
+import {AccountService} from './services/account.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -38,6 +42,7 @@ const appRoutes: Routes = [
   {path: 'events', component: EventListComponent},
   {path: 'events/new', component: EventFormComponent},
   {path: 'events/view/:id', component: EventDetailComponent},
+  {path: 'events/balance/:id', component: BalanceComponent},
   {path: 'paiment/new', component: PaimentComponent},
   {path: 'homepage', component: HomepageComponent},
   {path: '', redirectTo: 'homepage', pathMatch: 'full'},
@@ -59,6 +64,7 @@ const appRoutes: Routes = [
     EventParticipateComponent,
     EventBalanceComponent,
     PaimentComponent,
+    BalanceComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -73,6 +79,8 @@ const appRoutes: Routes = [
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
+    ChartsModule, WavesModule,
+    MatTabsModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr'},
@@ -81,6 +89,7 @@ const appRoutes: Routes = [
     UserService,
     ParticipateService,
     PaymentService,
+    AccountService,
   ],
   bootstrap: [AppComponent]
 })

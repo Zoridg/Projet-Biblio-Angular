@@ -49,7 +49,7 @@ export class PaimentComponent implements OnInit {
 
   public onSavePaiment() {
     if (this.receivers == null || this.receivers.length === 0) {
-        this.errorMessage = "Vous n'avez pas choisit de bénéficiaire"
+      this.errorMessage = 'Vous n\'avez pas choisit de bénéficiaire';
     } else {
       const lib = this.paimentForm.get('lib').value;
       const amount = this.paimentForm.get('amount').value;

@@ -37,6 +37,5 @@ export class EventFormComponent implements OnInit {
       this.eventService.event = data;
       this.router.navigate(['events/view/', this.eventService.event.eno]);
     });
-    this.router.navigate(['/books']);
   }
 }

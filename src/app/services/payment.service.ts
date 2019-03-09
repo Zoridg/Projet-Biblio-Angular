@@ -17,7 +17,6 @@ const httpOptions = {
 })
 export class PaymentService {
 
-
   constructor(private httpClient: HttpClient) {
   }
 
@@ -25,7 +24,15 @@ export class PaymentService {
     return this.httpClient.get<Payment[]>(`${environment.api.url}/payment/event/${eno}`, httpOptions);
   }
 
-  public addPayment(payment: Payment){
+  public addPayment(payment: Payment) {
     return this.httpClient.post<Event>(`${environment.api.url}/payment`, payment, httpOptions);
+  }
+
+  public get payment() {
+    return JSON.parse(localStorage.getItem('paiment')) as Payment;
+  }
+
+  public set payment(payment: Payment) {
+    localStorage.setItem('paiment', JSON.stringify(payment));
   }
 }

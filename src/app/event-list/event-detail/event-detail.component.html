@@ -1,14 +1,20 @@
-<div class="">
-  <tabset>
-    <tab heading="Informations" id="tab1">
-      <app-event-info></app-event-info>
-    </tab>
-    <tab heading="Participants">
-      <app-event-participate></app-event-participate>
-    </tab>
-    <tab heading="Dépenses">
-      <app-event-balance></app-event-balance>
-    </tab>
-  </tabset>
-</div>
-
+<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <h1>Informations</h1>
+    </ng-template>
+    <app-event-info></app-event-info>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <h1>Participants</h1>
+    </ng-template>
+    <app-event-participate></app-event-participate>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <h1>Dépenses</h1>
+    </ng-template>
+    <app-event-balance></app-event-balance>
+  </mat-tab>
+</mat-tab-group>
