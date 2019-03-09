@@ -1,41 +1,64 @@
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  font-family: Arial;
-  margin-bottom: 50px;
-  padding: 0px;
+#mainNav {
+  background-color: #212529;
 }
 
-.navbar a {
-  float: left;
-  font-size: 16px;
+#mainNav .navbar-toggler {
+  font-size: 12px;
+  right: 0;
+  padding: 10px;
+  text-transform: uppercase;
   color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+  border: 0;
+  background-color: #569afe;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-.navbar a:hover {
-  background-color: dimgrey;
+#mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+  color: #569afe;
 }
 
-#deco {
-  margin-right: 5px;
-}
-
-.active {
-  background-color: grey;
+#mainNav .navbar-nav .nav-item .nav-link {
+  font-size: 90%;
+  font-weight: 400;
+  padding: 0.75em 0;
+  letter-spacing: 1px;
   color: white;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-.dropdown-menu {
-  background-color: dimgrey;
+#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+  color: #569afe;
 }
 
-a[aria-expanded="true"]{
-  background-color: dimgrey;
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+    border: none;
+    background-color: transparent;
+  }
+  #mainNav .navbar-brand {
+    font-size: 1.75em;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link {
+    padding: 1.1em 1em !important;
+  }
+  #mainNav.navbar-shrink {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #212529;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.25em;
+    padding: 12px 0;
+  }
 }
 
-.nav-item .dropdown {
-  background-color: dimgrey;
+img {
+  width: 100px;
+  height: 50px;
 }

@@ -15,8 +15,6 @@ export class HomepageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    if (this.authService.isConnected()) {
-      this.router.navigate(['/events']);
-    }
+
   }
 }

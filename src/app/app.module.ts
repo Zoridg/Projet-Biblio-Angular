@@ -39,8 +39,8 @@ const appRoutes: Routes = [
   {path: 'events/new', component: EventFormComponent},
   {path: 'events/view/:id', component: EventDetailComponent},
   {path: 'paiment/new', component: PaimentComponent},
-  {path: '', component: HomepageComponent},
-  {path: '', redirectTo: '/', pathMatch: 'full'},
+  {path: 'homepage', component: HomepageComponent},
+  {path: '', redirectTo: 'homepage', pathMatch: 'full'},
   {path: '**', redirectTo: '/'}
 ];
 

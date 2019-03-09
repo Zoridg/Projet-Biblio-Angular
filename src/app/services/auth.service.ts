@@ -39,7 +39,7 @@ export class AuthService {
 
   public signOutUser() {
     localStorage.setItem('user', null);
-    this.router.navigate(['/']);
+    this.router.navigate(['auth/signin']);
   }
 
   public get user(): User {
