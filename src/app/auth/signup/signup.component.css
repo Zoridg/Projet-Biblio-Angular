@@ -1,8 +1,13 @@
 h2 {
   text-align: center;
   border: 2px solid white;
+  color: white;
 }
 
 #signin {
   margin-left:10px;
+}
+
+label {
+  color: white;
 }

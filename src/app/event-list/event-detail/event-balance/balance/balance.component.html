@@ -1,22 +1,37 @@
+<!--<div style="display: block">-->
+  <!--<canvas mdbChart-->
+          <!--[chartType]="chartType"-->
+          <!--[datasets]="chartDatasets"-->
+          <!--[labels]="chartLabels"-->
+          <!--[colors]="chartColors"-->
+          <!--[options]="chartOptions"-->
+          <!--[legend]="true"-->
+          <!--(chartHover)="chartHovered($event)"-->
+          <!--(chartClick)="chartClicked($event)">-->
+  <!--</canvas>-->
+<!--</div>-->
 <div class="container">
-  <h1>Equilibrage</h1>
-  <div style="display: block">
-    <canvas mdbChart
-            [chartType]="chartType"
-            [datasets]="chartDatasets"
-            [labels]="chartLabels"
-            [colors]="chartColors"
-            [options]="chartOptions"
-            [legend]="true"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
-    </canvas>
+  <div class="row">
+    <div class="col-lg-12 cold-md-10 col-sm-10 col-xs-12">
+      <div class="card hovercard">
+        <div class=" card-header cardheader">
+          <h2>Compte final</h2>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let refund of refunds">{{refund.giver.pseudo}} doit {{refund.amount}}€ à
+              {{refund.receiver.pseudo}}
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer buttons">
+          <div class="button-wrapper">
+            <button type="button" class="btn btn-labeled btn-outline-warning" (click)="onBack()">
+              <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let refund of refunds">{{refund.giver.pseudo}} doit {{refund.amount}}€ à
-      {{refund.receiver.pseudo}}
-    </li>
-  </ul>
 </div>

@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class EventBalanceComponent implements OnInit {
 
   private payments: Payment[];
+  public step: number;
 
   constructor(private eventsService: EventService,
               private userService: UserService,
@@ -35,4 +36,15 @@ export class EventBalanceComponent implements OnInit {
     this.router.navigate(['events/balance/', id]);
   }
 
+  setStep(i) {
+    this.step = i;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 }

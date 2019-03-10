@@ -1,28 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-sm-6">
+    <div class="col-lg-12 col-sm-12">
       <div class="card hovercard">
-        <div class="cardheader">
-
+        <div class=" card-header cardheader">
+          <h5 class="card-title" style="margin-top: 20px; font-size: 35px;">{{event.title}}</h5>
         </div>
         <div class="avatar">
           <img alt="" src="../../../../assets/icone-lieu.png">
         </div>
-        <div class="info">
-          <h5 class="card-title">{{event.title}}</h5>
-          <blockquote class="card-text">{{event.description}}</blockquote>
+        <div class="card-body">
+          <div class="info">
+            <blockquote class="card-text">{{event.description}}</blockquote>
+          </div>
+          <div class="bottom">
+            <strong>{{event.date_creation | date: 'EEEE dd LLLL à HH:mm'}}</strong>
+          </div>
         </div>
-        <div class="bottom">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{event.date_creation | date: 'EEEE dd LLLL à HH:mm'}}</li>
-          </ul>
+        <div class="card-footer buttons">
+          <div class="button-wrapper">
+            <button type="button" class="btn btn-labeled btn-outline-warning" routerLink="/events">
+              <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="button-wrapper">
-  <button type="button" class="btn btn-labeled btn-warning" routerLink="/events">
-    <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
-  </button>
 </div>

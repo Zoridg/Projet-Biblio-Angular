@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventInfoComponent } from './event-info.component';
+import {describe, expect} from 'jasmine';
 
 describe('EventInfoComponent', () => {
   let component: EventInfoComponent;

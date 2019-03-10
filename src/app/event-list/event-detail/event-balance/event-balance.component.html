@@ -1,25 +1,47 @@
-<accordion>
-  <accordion-group
-    heading="{{payment.giver.pseudo}} a donné {{payment.amount}} pour {{payment.lib}} le {{payment.datePay | date: 'EEEE dd LLLL'}}"
-    *ngFor="let payment of payments">
-    <h5>Bénéficiaires</h5>
-    <ul>
-      <li *ngFor="let user of payment.userReceivers">{{user.pseudo}}</li>
-    </ul>
-    <button class="btn btn-outline-info right" (click)="showBalance(payment.eno)">Equilibrage</button>
-  </accordion-group>
-</accordion>
-
-<div class="buttons">
-  <div>
-    <button type="button" class="btn btn-labeled btn-warning" routerLink="/events">
-      <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
-    </button>
-  </div>
-
-  <div>
-    <button class="btn btn-primary" id="addEvent" (click)="addPayment()"><span
-      class="btn-label btn-label-left pull-left"><i class="fas fa-plus-circle"></i></span>Ajouter un paiement
-    </button>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12">
+      <div class="card hovercard">
+        <div class="card-header cardheader">
+          <h2 class="card-title">Dépenses</h2>
+        </div>
+        <div class="info">
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let payment of payments; let i = index" [expanded]="step === i"
+                                 (opened)="setStep(i)" class="mat-expansion-panel" hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title class="mat-panel-title">
+                  {{payment.giver.pseudo}} a donné {{payment.amount}}€ pour <br><em>{{payment.lib}}</em>
+                </mat-panel-title>
+                <mat-panel-description class="mat-panel-description">
+                  {{payment.datePay | date: 'EEEE dd LLLL'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <h3>Bénéficiaires</h3>
+              <ul>
+                <li *ngFor="let user of payment.userReceivers">{{user.pseudo}}</li>
+              </ul>
+              <button class="btn btn-info" (click)="showBalance(payment.eno)">Equilibrage</button>
+              <mat-action-row>
+                <button mat-button color="danger" (click)="prevStep()" *ngIf="i >= 1">Previous</button>
+                <button mat-button color="light" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="buttons">
+          <div class="card-footer buttons">
+            <div class="button-wrapper">
+              <button type="button" class="btn btn-labeled btn-outline-warning" routerLink="/events">
+                <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
+              </button>
+            </div>
+            <button class="btn btn-outline-primary" id="addEvent" (click)="addPayment()"><i class="fas fa-plus-circle"></i>
+              Ajouter un paiement
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

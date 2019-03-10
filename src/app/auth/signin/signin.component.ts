@@ -19,7 +19,7 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.authService.isConnected()) {
+    if (this.authService.isConnected()) {
       this.router.navigate(['events']);
     }
     this.initForm();

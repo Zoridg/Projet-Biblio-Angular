@@ -30,9 +30,15 @@ import {PaimentComponent} from './event-list/paiment/paiment.component';
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BalanceComponent} from './event-list/event-detail/event-balance/balance/balance.component';
-import {ChartsModule, WavesModule} from 'angular-bootstrap-md';
+import {ChartsModule, MDBBootstrapModule, WavesModule} from 'angular-bootstrap-md';
 import {AccountService} from './services/account.service';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -74,13 +80,16 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
     SidebarModule,
+    RouterModule.forRoot(appRoutes),
     BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
     ChartsModule, WavesModule,
-    MatTabsModule,
+    MatTabsModule, MatExpansionModule, MatIconModule, MatButtonModule,
+    MatFormFieldModule, MatInputModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr'},

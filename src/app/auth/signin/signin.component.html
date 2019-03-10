@@ -3,12 +3,12 @@
     <h2 class="label-H">S'authentifier</h2>
     <form name="formSignIn" [formGroup]="signinForm" (ngSubmit)="onSubmit()" novalidate>
       <div class="form-group">
-        <label class="label-H" for="mail">Adresse mail</label>
+        <label class="label-H">Adresse mail</label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="span1"><i class="fas fa-at"></i></span>
           </div>
-          <input type="text" id="mail" class="form-control" formControlName="mail" placeholder="e-mail"
+          <input type="text" id="mail1" class="form-control" formControlName="mail" placeholder="e-mail"
                  aria-describedby="span1">
         </div>
         <div class="form-group">
@@ -23,9 +23,8 @@
         </div>
         <button class="btn btn-primary"
                 type="submit">Se connecter</button>
-        <button class="btn btn-primary" routerLink="/auth/signup" id="signup">Se créer un compte</button>
       </div>
     </form>
-    <p class="text-danger">{{errorMessage}}</p>
+
   </div>
 </div>

@@ -30,7 +30,7 @@ export class EventParticipateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isFake = false;
+    this.isFake = true;
     this.addEvent = false;
     this.participation = {
       eno: this.eventsService.event.eno,
@@ -75,7 +75,7 @@ export class EventParticipateComponent implements OnInit {
           if (!this.alreadyParticipate(data.uno)) {
             this.participateService.createNewParticipation(this.participation).subscribe();
             this.users.push(data);
-          }else{
+          } else {
             this.errorMessage = 'Utilisateur déjà participant';
           }
         },

@@ -15,8 +15,9 @@
         </li>
       </ul>
     </div>
+    <button class="btn btn-outline-info" id="events" routerLink="events" *ngIf="isConnected()">Mes évènements</button>
+    <button class="btn btn-outline-danger right" (click)="onSignOut()" *ngIf="isConnected()">
+      Déconnexion
+    </button>
   </div>
-  <button class="btn btn-outline-danger right" (click)="onSignOut()" *ngIf="isConnected()">
-    Déconnexion
-  </button>
 </nav>

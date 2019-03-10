@@ -1,13 +1,22 @@
-/*.container {*/
-  /*width: 100%*/
-/*}*/
+blockquote {
+  font-style: italic;
+}
 
-/*.card {*/
-  /*width: auto;*/
-  /*margin: auto;*/
-  /*position: relative;*/
-/*}*/
+h5 {
+  border: 2px solid white;
+}
 
+blockquote, h5, strong {
+  color: white;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 12%;
+  justify-content: space-between;
+}
 
 
 .card {
@@ -86,7 +95,6 @@
 
 .card.people .card-info .title {
   display: block;
-  margin: 8px 14px 0 14px;
   overflow: hidden;
   font-size: 16px;
   font-weight: bold;
@@ -102,20 +110,6 @@
   line-height: 16px;
   color: #737373;
   text-overflow: ellipsis;
-}
-
-.card.people .card-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: inline-block;
-  width: 100%;
-  padding: 10px 20px;
-  line-height: 29px;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .card.hovercard {
@@ -165,9 +159,4 @@
   line-height: 20px;
   color: #737373;
   text-overflow: ellipsis;
-}
-
-.card.hovercard .bottom {
-  padding: 0 20px;
-  margin-bottom: 17px;
 }
