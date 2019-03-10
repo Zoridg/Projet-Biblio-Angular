@@ -19,6 +19,7 @@ export class PaimentComponent implements OnInit {
   paiment: Payment;
   participatesEvent: User[];
   receivers: User[];
+  currentUser: User;
   receive: FormControl;
   errorMessage: string;
 
@@ -45,6 +46,9 @@ export class PaimentComponent implements OnInit {
     this.receive.valueChanges.subscribe(values => {
       this.receivers = values;
     });
+    this.currentUser = this.authService.user;
+    console.log(this.currentUser);
+    console.log(this.participatesEvent);
   }
 
   public onSavePaiment() {

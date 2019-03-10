@@ -8,10 +8,13 @@ import {AuthService} from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  pseudo: string;
+
   constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.pseudo = this.authService.user.pseudo;
   }
 
   onSignOut() {

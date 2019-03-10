@@ -12,7 +12,16 @@
         <input id="amount" type="number" class="form-control" formControlName="amount">
       </div>
       <div class="form-group">
-        <label>Liste des bénéficiaires</label>
+        <label>Payé par</label>
+        <form [formGroup]="listGroup"></form>
+        <mat-select class="form-control" [formControl]="receive">
+          <mat-option *ngFor="let user of participatesEvent" [value]="user">
+            {{user.pseudo}}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="form-group">
+        <label>Pour</label>
         <form [formGroup]="listGroup" (ngSubmit)="onAddReceiver()"></form>
         <mat-select class="form-control" id="participants" [formControl]="receive" multiple>
           <mat-option *ngFor="let user of participatesEvent" [value]="user">
