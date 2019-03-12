@@ -22,7 +22,6 @@ h2 {
   align-items: center;
 }
 
-
 .card {
   padding-top: 20px;
   margin: 10px 0 20px 0;
@@ -61,8 +60,14 @@ h2 {
   background: rgba(0, 0, 0, 0);
   color: white;
   border: 1px solid white;
+  margin: 3px;
 }
 
 .mat-panel-title, .mat-panel-description {
   color: white;
+  font-weight: bold;
+}
+
+.mat-action-row {
+  border-top: 1px solid white;
 }

@@ -21,6 +21,7 @@ export class EventParticipateComponent implements OnInit {
   public participateForm: FormGroup;
   public participation: Participate;
   public errorMessage: string;
+  public toggle: string;
 
   constructor(private eventsService: EventService,
               private authService: AuthService,

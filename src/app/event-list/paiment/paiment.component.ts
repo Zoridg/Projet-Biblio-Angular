@@ -24,6 +24,7 @@ export class PaimentComponent implements OnInit {
   receive: FormControl;
   give: FormControl;
   errorMessage: string;
+  allSelected;
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -68,10 +69,9 @@ export class PaimentComponent implements OnInit {
       const lib = this.paimentForm.get('lib').value;
       const amount = this.paimentForm.get('amount').value;
       this.paiment = new Payment(this.giver.uno, this.eventsService.event.eno, lib, amount, this.receivers);
-      this.paymentService.addPayment(this.paiment).subscribe(() =>{
+      this.paymentService.addPayment(this.paiment).subscribe(() => {
         this.router.navigate(['events/view/', this.eventsService.event.eno]);
       });
     }
   }
-
 }

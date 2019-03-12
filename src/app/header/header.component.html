@@ -6,6 +6,7 @@
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
+      <span class="badge badge-info" style="font-size: 15px;" *ngIf="isConnected()">Bienvenue {{authService.user.pseudo}}</span>
       <ul class="navbar-nav text-uppercase ml-auto">
         <li class="nav-item">
           <a class="nav-link menu-item" routerLink="auth/signin" *ngIf="!isConnected()">Se connecter</a>
@@ -13,12 +14,14 @@
         <li class="nav-item">
           <a class="nav-link menu-item" routerLink="auth/signup" *ngIf="!isConnected()">Créer un compte</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link menu-item" id="events" routerLink="events" *ngIf="isConnected()">Mes évènements</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link deco menu-item" (click)="onSignOut()" *ngIf="isConnected()">Déconnexion</a>
+        </li>
       </ul>
     </div>
-    <span class="badge badge-primary" *ngIf="isConnected()">{{authService.user.pseudo}}</span>
-    <button class="btn btn-outline-info" id="events" routerLink="events" *ngIf="isConnected()">Mes évènements</button>
-    <button class="btn btn-outline-danger right" (click)="onSignOut()" *ngIf="isConnected()">
-      Déconnexion
-    </button>
+
   </div>
 </nav>

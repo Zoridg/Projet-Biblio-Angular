@@ -5,9 +5,13 @@ h2 {
 }
 
 #signin {
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 label {
   color: white;
+}
+
+form {
+  margin-bottom: 10px;
 }

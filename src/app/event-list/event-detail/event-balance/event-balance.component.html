@@ -5,8 +5,8 @@
         <div class="card-header cardheader">
           <h2 class="card-title">Dépenses</h2>
         </div>
-        <div class="card-body info" style="text-align: center;">
-          <p *ngIf="!payments || payments.length === 0" style="color: white;">Vous n'avez pas encore de dépenses</p>
+        <div class="card-body info">
+          <p *ngIf="!payments || payments.length === 0" style="color: white; text-align: center;">Vous n'avez pas encore de dépenses. Cliquez sur le bouton "Ajouter un paiment" pour en ajouter une</p>
           <mat-accordion>
             <mat-expansion-panel *ngFor="let payment of payments; let i = index" [expanded]="step === i"
                                  (opened)="setStep(i)" class="mat-expansion-panel" hideToggle>
@@ -22,9 +22,9 @@
               <ul>
                 <li *ngFor="let user of payment.userReceivers">{{user.pseudo}}</li>
               </ul>
-              <mat-action-row>
-                <button mat-button color="danger" (click)="prevStep()" *ngIf="i >= 1">Previous</button>
-                <button mat-button color="light" (click)="nextStep()">Next</button>
+              <mat-action-row class="mat-action-row">
+                <button mat-button color="danger" (click)="prevStep()" *ngIf="i >= 1">Précédent</button>
+                <button mat-button color="light" (click)="nextStep()">Suivant</button>
               </mat-action-row>
             </mat-expansion-panel>
           </mat-accordion>

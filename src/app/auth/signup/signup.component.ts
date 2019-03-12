@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 import {User} from '../../models/user';
 
 @Component({
@@ -14,13 +14,14 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   errorMessage: string;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  }
 
   public ngOnInit() {
     this.initForm();
   }
 
-  public initForm(){
+  public initForm() {
     this.signupForm = this.formBuilder.group({
       mail: ['', [Validators.required, Validators.email]],
       pwd: ['', Validators.required],
@@ -28,7 +29,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  public onSubmit(){
+  public onSubmit() {
     const user = {
       mail: this.signupForm.get('mail').value,
       pwd: this.signupForm.get('pwd').value,
@@ -42,11 +43,11 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['events']);
       },
       (error) => {
-        if(error.status = '406'){
-          this.errorMessage = "Login already exist";
+        if (error.status = '406') {
+          this.errorMessage = 'L\'adresse mail existe déjà';
         }
       }
-    )
+    );
   }
 
 }
