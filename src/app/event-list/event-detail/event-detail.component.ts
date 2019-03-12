@@ -12,7 +12,8 @@ export class EventDetailComponent implements OnInit {
 
   event: Event;
 
-  constructor(private eventsService: EventService, private authService: AuthService) { }
+  constructor(private eventsService: EventService, private authService: AuthService) {
+  }
 
   ngOnInit() {
     this.authService.isConnected();

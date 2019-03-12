@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   public signOutUser() {
-    localStorage.setItem('user', null);
+    localStorage.clear();
     this.router.navigate(['auth/signin']);
   }
 

@@ -15,7 +15,7 @@
         </li>
       </ul>
     </div>
-    <span class="badge badge-primary" *ngIf="isConnected()">{{pseudo}}</span>
+    <span class="badge badge-primary" *ngIf="isConnected()">{{authService.user.pseudo}}</span>
     <button class="btn btn-outline-info" id="events" routerLink="events" *ngIf="isConnected()">Mes évènements</button>
     <button class="btn btn-outline-danger right" (click)="onSignOut()" *ngIf="isConnected()">
       Déconnexion

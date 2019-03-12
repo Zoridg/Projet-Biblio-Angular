@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pseudo = this.authService.user.pseudo;
+
   }
 
   onSignOut() {

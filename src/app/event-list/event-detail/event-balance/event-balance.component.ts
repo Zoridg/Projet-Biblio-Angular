@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PaymentService} from '../../../services/payment.service';
 import {Payment} from '../../../models/payment';
-import {Event} from '../../../models/event';
 import {EventService} from '../../../services/event.service';
 import {UserService} from '../../../services/user.service';
 import {Router} from '@angular/router';
