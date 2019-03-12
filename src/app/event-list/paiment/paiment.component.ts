@@ -24,7 +24,6 @@ export class PaimentComponent implements OnInit {
   receive: FormControl;
   give: FormControl;
   errorMessage: string;
-  allSelected;
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -56,10 +55,8 @@ export class PaimentComponent implements OnInit {
     });
 
     this.give.valueChanges.subscribe(value => {
-      console.log(value);
       this.giver = value;
     });
-    console.log(this.giver);
   }
 
   public onSavePaiment() {
