@@ -32,8 +32,8 @@ export class EventBalanceComponent implements OnInit {
     this.router.navigate(['paiment/new']);
   }
 
-  public showBalance(id: number) {
-    this.router.navigate(['events/balance/', id]);
+  public showBalance() {
+    this.router.navigate(['events/balance/', this.eventsService.event.eno]);
   }
 
   setStep(i) {

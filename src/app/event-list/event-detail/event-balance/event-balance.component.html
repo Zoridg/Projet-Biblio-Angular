@@ -6,6 +6,7 @@
           <h2 class="card-title">Dépenses</h2>
         </div>
         <div class="info">
+          <p *ngIf="!payments || payments.length === 0" style="color: white;">Vous n'avez pas encore de dépenses</p>
           <mat-accordion>
             <mat-expansion-panel *ngFor="let payment of payments; let i = index" [expanded]="step === i"
                                  (opened)="setStep(i)" class="mat-expansion-panel" hideToggle>
@@ -21,7 +22,6 @@
               <ul>
                 <li *ngFor="let user of payment.userReceivers">{{user.pseudo}}</li>
               </ul>
-              <button class="btn btn-info" (click)="showBalance(payment.eno)">Equilibrage</button>
               <mat-action-row>
                 <button mat-button color="danger" (click)="prevStep()" *ngIf="i >= 1">Previous</button>
                 <button mat-button color="light" (click)="nextStep()">Next</button>
@@ -35,6 +35,9 @@
               <button type="button" class="btn btn-labeled btn-outline-warning" routerLink="/events">
                 <span class="btn-label"><i class="fas fa-chevron-left"></i></span> Retour
               </button>
+            </div>
+            <div>
+              <button class="btn btn-outline-info" (click)="showBalance()" style="position: center;">Equilibrage</button>
             </div>
             <button class="btn btn-outline-primary" id="addEvent" (click)="addPayment()"><i class="fas fa-plus-circle"></i>
               Ajouter un paiement

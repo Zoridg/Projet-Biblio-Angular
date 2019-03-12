@@ -15,12 +15,14 @@ import {PaymentService} from '../../services/payment.service';
 export class PaimentComponent implements OnInit {
 
   paimentForm: FormGroup;
-  listGroup: FormGroup;
+  listReceiver: FormGroup;
+  listGiver: FormGroup;
   paiment: Payment;
+  giver: User;
   participatesEvent: User[];
   receivers: User[];
-  currentUser: User;
   receive: FormControl;
+  give: FormControl;
   errorMessage: string;
 
   constructor(private authService: AuthService,
@@ -32,6 +34,7 @@ export class PaimentComponent implements OnInit {
 
   ngOnInit() {
     this.receive = new FormControl();
+    this.give = new FormControl();
     this.eventsService.getUsersForAnEvent(this.eventsService.event.eno).subscribe(data => {
       this.participatesEvent = data;
     });
@@ -39,16 +42,23 @@ export class PaimentComponent implements OnInit {
       lib: ['', Validators.required],
       amount: ['', Validators.required],
     });
-    this.listGroup = this.formBuilder.group({
+    this.listReceiver = this.formBuilder.group({
+      select: ''
+    });
+
+    this.listGiver = this.formBuilder.group({
       select: ''
     });
 
     this.receive.valueChanges.subscribe(values => {
       this.receivers = values;
     });
-    this.currentUser = this.authService.user;
-    console.log(this.currentUser);
-    console.log(this.participatesEvent);
+
+    this.give.valueChanges.subscribe(value => {
+      console.log(value);
+      this.giver = value;
+    });
+    console.log(this.giver);
   }
 
   public onSavePaiment() {
@@ -57,9 +67,10 @@ export class PaimentComponent implements OnInit {
     } else {
       const lib = this.paimentForm.get('lib').value;
       const amount = this.paimentForm.get('amount').value;
-      this.paiment = new Payment(this.authService.user.uno, this.eventsService.event.eno, lib, amount, this.receivers);
-      this.paymentService.addPayment(this.paiment).subscribe();
-      this.router.navigate(['events/view/', this.eventsService.event.eno]);
+      this.paiment = new Payment(this.giver.uno, this.eventsService.event.eno, lib, amount, this.receivers);
+      this.paymentService.addPayment(this.paiment).subscribe(() =>{
+        this.router.navigate(['events/view/', this.eventsService.event.eno]);
+      });
     }
   }
 

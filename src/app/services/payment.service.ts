@@ -3,7 +3,6 @@ import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Event} from '../models/event';
-import {User} from '../models/user';
 import {Payment} from '../models/payment';
 
 const httpOptions = {
@@ -16,6 +15,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PaymentService {
+
+  paiement: Payment;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -33,6 +34,7 @@ export class PaymentService {
   }
 
   public set payment(payment: Payment) {
+
     localStorage.setItem('paiment', JSON.stringify(payment));
   }
 }
