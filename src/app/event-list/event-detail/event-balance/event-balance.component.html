@@ -5,7 +5,7 @@
         <div class="card-header cardheader">
           <h2 class="card-title">Dépenses</h2>
         </div>
-        <div class="info">
+        <div class="card-body info" style="text-align: center;">
           <p *ngIf="!payments || payments.length === 0" style="color: white;">Vous n'avez pas encore de dépenses</p>
           <mat-accordion>
             <mat-expansion-panel *ngFor="let payment of payments; let i = index" [expanded]="step === i"

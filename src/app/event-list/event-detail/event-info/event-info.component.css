@@ -10,14 +10,12 @@ blockquote, h5, strong {
   color: white;
 }
 
-
 .buttons {
   display: flex;
   flex-direction: row;
   flex: 1 1 12%;
   justify-content: space-between;
 }
-
 
 .card {
   padding-top: 20px;
