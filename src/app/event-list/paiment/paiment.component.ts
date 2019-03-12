@@ -56,10 +56,8 @@ export class PaimentComponent implements OnInit {
     });
 
     this.give.valueChanges.subscribe(value => {
-      console.log(value);
       this.giver = value;
     });
-    console.log(this.giver);
   }
 
   public onSavePaiment() {

@@ -24,7 +24,7 @@
         <label>Pour</label>
         <form [formGroup]="listReceiver"></form>
         <mat-select class="form-control" id="participants" [formControl]="receive" multiple>
-          <mat-option *ngFor="let user of participatesEvent" [value]="user.uno">
+          <mat-option *ngFor="let user of participatesEvent" [value]="user">
             {{user.pseudo}}
           </mat-option>
         </mat-select>
